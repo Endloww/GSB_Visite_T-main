@@ -6,10 +6,11 @@ const motifRoutes = require('./routes/motif');
 const praticienRoutes = require('./routes/praticien');
 const visiteRoutes = require('./routes/visite');
 const visiteurRoutes = require('./routes/visiteur');
+const userRoutes = require('./routes/user');
 
 const app = express();
 
-mongoose.connect('mongodb+srv://kylianpatry:YMvhH4HWsJbGrGj@kyliandatabaseexpressjs.fshpelw.mongodb.net/?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://endloww:6yPcHXe2Yuwp92Bt@cluster0.zipwb5w.mongodb.net/?retryWrites=true&w=majority')
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
@@ -27,5 +28,6 @@ app.use('/api/motif', motifRoutes);
 app.use('/api/praticien', praticienRoutes);
 app.use('/api/visite', visiteRoutes);
 app.use('/api/visiteur', visiteurRoutes);
+app.use('/api/auth', userRoutes);
 
 module.exports = app;
