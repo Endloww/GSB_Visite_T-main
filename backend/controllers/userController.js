@@ -29,7 +29,7 @@ exports.signup = [
             // Send back the first error message
             return res.status(400).json({ error: errors.array()[0].msg });
         }
-
+        
         const hash = await bcrypt.hash(req.body.password, 10);
         const visiteur = new Visiteur({
             nom: req.body.nom,
@@ -42,7 +42,11 @@ exports.signup = [
         });
 
         await visiteur.save();
-        res.status(201).json({ message: 'visiteur créé !' });
+        res.status(201).json({
+            message:"Visiteur créer !",
+            lastVisiteurId: visiteur._id,
+            lastVisiteurEmail: req.body.email,
+            lastVisiteurPassword: req.body.password });
     })
 ];
 

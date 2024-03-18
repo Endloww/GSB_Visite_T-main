@@ -1,4 +1,5 @@
 const express = require('express');
+const helmet = require('helmet');
 const mongoose = require('mongoose');
 
 const stuffRoutes = require('./routes/stuff');
@@ -23,6 +24,8 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(helmet());
+app.set('trust proxy', 1);
 app.use('/api/stuff', stuffRoutes);
 app.use('/api/motif', motifRoutes);
 app.use('/api/praticien', praticienRoutes);
