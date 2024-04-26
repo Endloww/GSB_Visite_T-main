@@ -8,6 +8,7 @@ const praticienRoutes = require('./routes/praticien');
 const visiteRoutes = require('./routes/visite');
 const visiteurRoutes = require('./routes/visiteur');
 const userRoutes = require('./routes/user');
+const auth = require('./middlewares/auth');
 
 const app = express();
 
@@ -26,11 +27,11 @@ app.use((req, res, next) => {
 
 app.use(helmet());
 app.set('trust proxy', 1);
-app.use('/api/stuff', stuffRoutes);
-app.use('/api/motif', motifRoutes);
-app.use('/api/praticien', praticienRoutes);
-app.use('/api/visite', visiteRoutes);
-app.use('/api/visiteur', visiteurRoutes);
+app.use('/api/stuff', auth, stuffRoutes);
+app.use('/api/motif', auth, motifRoutes);
+app.use('/api/praticien', auth, praticienRoutes);
+app.use('/api/visite', auth, visiteRoutes);
+app.use('/api/visiteur', auth, visiteurRoutes);
 app.use('/api/auth', userRoutes);
 
 module.exports = app;

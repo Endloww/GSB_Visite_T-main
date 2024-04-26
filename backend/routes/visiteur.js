@@ -9,5 +9,6 @@ router.post('/', visiteurCtrl.createVisiteur);
 router.get('/:id', visiteurCtrl.getOneVisiteur);
 router.put('/:id', visiteurCtrl.modifyVisiteur);
 router.delete('/:id', visiteurCtrl.deleteVisiteur);
+router.post('/:visiteur_id/praticien/:praticien_id', visiteurCtrl.addPraticien);
 
 module.exports = router;

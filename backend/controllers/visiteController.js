@@ -1,3 +1,4 @@
+const visite = require('../models/visite');
 const Visite = require('../models/visite');
 const expressAsyncHandler = require('express-async-handler');
 
@@ -46,3 +47,4 @@ exports.getAllVisites = expressAsyncHandler(async (req, res) => {
     const visites = await Visite.find();
     res.status(200).json(visites);
 });
+
